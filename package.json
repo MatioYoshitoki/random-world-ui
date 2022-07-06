@@ -1,0 +1,35 @@
+{
+  "name": "random-world-ui",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.0.6",
+    "axios": "^0.27.2",
+    "element-plus": "^2.2.6",
+    "pinia": "^2.0.14",
+    "pinia-plugin-persist": "^1.0.0",
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.16"
+  },
+  "devDependencies": {
+    "@iconify-json/ep": "^1.1.5",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.1.0",
+    "eslint-plugin-vue": "^9.1.1",
+    "prettier": "^2.7.1",
+    "sass": "^1.53.0",
+    "unplugin-auto-import": "^0.9.1",
+    "unplugin-icons": "^0.14.6",
+    "unplugin-vue-components": "^0.20.1",
+    "vite": "^2.9.9",
+    "vite-plugin-pages": "^0.24.2",
+    "vite-plugin-vue-layouts": "^0.6.0"
+  }
+}
