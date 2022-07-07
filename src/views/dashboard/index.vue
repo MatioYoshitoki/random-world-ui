@@ -3,9 +3,9 @@
   <!--  <template v-for="kv in fishDataMap">-->
   <!--    <fish-card :fish-data="kv.value" />-->
   <!--  </template>-->
-  <template v-for="kv in fishDataMap">
+  <div v-for="kv in fishDataMap" style="width: 200px" type="flex">
     <fish-card v-bind="kv" :fish-data="kv" />
-  </template>
+  </div>
 </template>
 <script>
 import { userStore } from '@/store/modules/user'
