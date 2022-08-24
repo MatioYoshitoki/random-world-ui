@@ -1,19 +1,16 @@
 <template>
-  <el-input v-model="message" type="textarea" placeholder="请输入内容"></el-input>
-  <!--  <template v-for="kv in fishDataMap">-->
-  <!--    <fish-card :fish-data="kv.value" />-->
-  <!--  </template>-->
-  <div v-for="kv in fishDataMap" style="width: 200px" type="flex">
-    <fish-card v-bind="kv" :fish-data="kv" />
-  </div>
+  <el-button type="primary" @click="newFish">投放新鱼</el-button>
+  <fish-dashboard :fish-data-map="fishDataMap" />
 </template>
 <script>
 import { userStore } from '@/store/modules/user'
+import { createFish } from '@/api/fish'
 
 export default {
   data() {
     return {
       user: userStore(),
+      fishIdList: [],
       fishDataMap: {},
       status: '未连接',
       message: '',
@@ -45,11 +42,18 @@ export default {
     sendMessage() {
       this.websock.send('{ "type": "login" }')
     },
+    newFish() {
+      createFish()
+    },
     dispatchMessage(data) {
       if (data['event_type'] === 'fish_heartbeat') {
         console.log(this.fishData)
         let fishData = data['fish_details']
-        this.fishDataMap[fishData['id']] = fishData
+        if (this.fishIdList.indexOf(fishData['id']) === -1) {
+          this.fishIdList.push(fishData['id'])
+        }
+        console.log('index of fish:' + this.fishIdList.indexOf(fishData['id']))
+        this.fishDataMap[this.fishIdList.indexOf(fishData['id'])] = fishData
       }
     }
   },

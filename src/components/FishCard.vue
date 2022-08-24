@@ -101,10 +101,20 @@
       <el-col v-else :span="24">
         <el-row>
           <el-col :span="12">
-            <el-button style="width: 80px; margin-left: calc(50% - 40px); text-align: center" size="mini" plain>吃</el-button>
+            <el-button
+              style="width: 80px; margin-left: calc(50% - 40px); text-align: center"
+              size="mini"
+              plain
+              >吃</el-button
+            >
           </el-col>
           <el-col :span="12">
-            <el-button style="width: 80px; margin-left: calc(50% - 40px); text-align: center" size="mini" plain>出售</el-button>
+            <el-button
+              style="width: 80px; margin-left: calc(50% - 40px); text-align: center"
+              size="mini"
+              plain
+              >出售</el-button
+            >
           </el-col>
         </el-row>
       </el-col>

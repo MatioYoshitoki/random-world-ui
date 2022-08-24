@@ -23,6 +23,9 @@ declare module '@vue/runtime-core' {
     ElRow: typeof import('element-plus/es')['ElRow']
     FishCard: typeof import('./components/FishCard.vue')['default']
     FishCardItem: typeof import('./components/FishCardItem.vue')['default']
+    FishDashboard: typeof import('./components/FishDashboard.vue')['default']
+    IEpLock: typeof import('~icons/ep/lock')['default']
+    IEpUser: typeof import('~icons/ep/user')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
