@@ -19,6 +19,7 @@
   "devDependencies": {
     "@iconify-json/ep": "^1.1.5",
     "@vitejs/plugin-vue": "^2.3.3",
+    "babel-plugin-component": "^1.1.1",
     "element-ui": "^2.15.9",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",

@@ -1,10 +1,10 @@
 <template>
   <el-button type="primary" @click="newFish">投放新鱼</el-button>
-  <fish-dashboard :fish-data-map="fishDataMap" />
+  <fish-dashboard :fish-data-map="fishDataMap" :parent-window="this" />
 </template>
 <script>
 import { userStore } from '@/store/modules/user'
-import { createFish } from '@/api/fish'
+import { createFish, ownerFishList } from '@/api/fish'
 
 export default {
   data() {
@@ -17,7 +17,17 @@ export default {
       websock: new WebSocket(`ws://127.0.0.1:7777/enjoy?accessToken=${userStore().token}`)
     }
   },
+  created() {
+    this.initFishDashboard()
+    this.createSocket()
+  },
   methods: {
+    initFishList(fishData) {
+      if (this.fishIdList.indexOf(fishData['id']) === -1) {
+        this.fishIdList.push(fishData['id'])
+      }
+      this.fishDataMap[this.fishIdList.indexOf(fishData['id'])] = fishData
+    },
     createSocket() {
       this.websock.onopen = () => {
         this.status = '连接服务器成功'
@@ -45,20 +55,22 @@ export default {
     newFish() {
       createFish()
     },
+    async initFishDashboard() {
+      console.log('try fetch')
+      const res = await ownerFishList()
+      const fishList = res.data
+      for (let idx in fishList) {
+        console.log(fishList[idx])
+        this.initFishList(fishList[idx])
+      }
+    },
     dispatchMessage(data) {
       if (data['event_type'] === 'fish_heartbeat') {
         console.log(this.fishData)
         let fishData = data['fish_details']
-        if (this.fishIdList.indexOf(fishData['id']) === -1) {
-          this.fishIdList.push(fishData['id'])
-        }
-        console.log('index of fish:' + this.fishIdList.indexOf(fishData['id']))
-        this.fishDataMap[this.fishIdList.indexOf(fishData['id'])] = fishData
+        this.initFishList(fishData)
       }
     }
-  },
-  created() {
-    this.createSocket()
   }
 }
 </script>

@@ -18,7 +18,7 @@ export default {
       required: true
     },
     fishValue: {
-      type: String,
+      type: Number,
       required: true
     }
   }
