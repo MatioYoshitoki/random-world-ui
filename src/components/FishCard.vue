@@ -188,7 +188,6 @@ export default {
     async tryPutFish(id) {
       try {
         const res = await putFish(id)
-        console.log('put fish result: ' + res)
         this.parentWindow.$notify.success({
           title: '成功',
           message: res.message
